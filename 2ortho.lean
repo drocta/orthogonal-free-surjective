@@ -15,13 +15,6 @@ def zorpodo {A B X Y : C} (i : category.hom A B) (p : category.hom X Y) :=
 		(category.comp f p = category.comp i g) ->
 		exists (h : category.hom B X) ,
 			(and (category.comp i h = f) (category.comp h p = g))
-
-
-variables blah glah : C
-
-#check category.hom blah glah
-
-
 end
 
 #check zorpodo
