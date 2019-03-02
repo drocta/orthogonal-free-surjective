@@ -7,7 +7,7 @@ open category_theory
 universes u_1 v_1
 
 section
-variables (C : Type u_1) [CC : category.{u_1} C]
+variables (C : Type u_1) [CC : category.{u_1 v_1} C]
 include CC
 
 def zorpodo {A B X Y : C} (i : category.hom A B) (p : category.hom X Y) :=
@@ -17,7 +17,9 @@ def zorpodo {A B X Y : C} (i : category.hom A B) (p : category.hom X Y) :=
 			(and (category.comp i h = f) (category.comp h p = g))
 
 
+variables blah glah : C
 
+#check category.hom blah glah
 
 
 end
