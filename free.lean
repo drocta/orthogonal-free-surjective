@@ -33,35 +33,25 @@ variables (c : Type u_1 -> Type u_2) (hom : (Pi {alpha beta : Type u_1}, c alpha
 
 variable my_concrete_category : concrete_category @hom
 
--- open functor
--- open forget
 
-#check forget
 #check @forget
 #check @forget c @hom my_concrete_category
 #check (@forget c @hom my_concrete_category).obj
 #check (@forget c @hom my_concrete_category).map
 
-def my_forget : bundled c ⥤ Type u_1 := @forget c @hom my_concrete_category
-
-#check my_forget
 
 -- should the statement that an object X is free over a set/type of generators include the function from
 -- the set of generators to the underlying set of X, in the statement,
 -- or should it just assert that such a function exists?
 -- I suspect the former, but it would be nice to be able to let said function be implicit.
+-- todo: this currently only states that such a g exists. It should say that a _unique_ g exists.
 def is_free_over (X : bundled c) (generators_of_X : Type u_1 ) (i : generators_of_X -> (@forget c @hom my_concrete_category).obj X) : Prop :=
   forall (Y : bundled c) (f : generators_of_X -> ((@forget c @hom my_concrete_category).obj Y)),
     exists (g : has_hom.hom X Y), f = ((@forget c @hom my_concrete_category).map g) ∘ i
 
 
-#check @concrete_category
-
-#check my_concrete_category
 
 #check is_free_over
 
 end
-
-
 
