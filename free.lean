@@ -40,15 +40,19 @@ variable my_concrete_category : concrete_category @hom
 #check @forget
 #check @forget c @hom my_concrete_category
 #check (@forget c @hom my_concrete_category).obj
+#check (@forget c @hom my_concrete_category).map
 
+def my_forget : bundled c ⥤ Type u_1 := @forget c @hom my_concrete_category
 
+#check my_forget
 
 -- should the statement that an object X is free over a set/type of generators include the function from
 -- the set of generators to the underlying set of X, in the statement,
 -- or should it just assert that such a function exists?
 -- I suspect the former, but it would be nice to be able to let said function be implicit.
-def is_free_over (X : bundled c) (generators_of_X : Type u_1 ) (generating_map : generators_of_X -> (@forget c @hom my_concrete_category).obj X) : Prop :=
-  sorry
+def is_free_over (X : bundled c) (generators_of_X : Type u_1 ) (i : generators_of_X -> (@forget c @hom my_concrete_category).obj X) : Prop :=
+  forall (Y : bundled c) (f : generators_of_X -> ((@forget c @hom my_concrete_category).obj Y)),
+    exists (g : has_hom.hom X Y), f = ((@forget c @hom my_concrete_category).map g) ∘ i
 
 
 #check @concrete_category
