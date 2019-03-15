@@ -44,7 +44,6 @@ variable my_concrete_category : concrete_category @hom
 -- the set of generators to the underlying set of X, in the statement,
 -- or should it just assert that such a function exists?
 -- I suspect the former, but it would be nice to be able to let said function be implicit.
--- todo: this currently only states that such a g exists. It should say that a _unique_ g exists.
 def is_free_over (X : bundled c) (generators_of_X : Type u_1 ) (i : generators_of_X -> (@forget c @hom my_concrete_category).obj X) : Prop :=
   forall (Y : bundled c) (f : generators_of_X -> ((@forget c @hom my_concrete_category).obj Y)),
     ∃! (g : has_hom.hom X Y), f = ((@forget c @hom my_concrete_category).map g) ∘ i
