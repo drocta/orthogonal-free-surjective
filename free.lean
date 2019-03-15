@@ -47,7 +47,7 @@ variable my_concrete_category : concrete_category @hom
 -- todo: this currently only states that such a g exists. It should say that a _unique_ g exists.
 def is_free_over (X : bundled c) (generators_of_X : Type u_1 ) (i : generators_of_X -> (@forget c @hom my_concrete_category).obj X) : Prop :=
   forall (Y : bundled c) (f : generators_of_X -> ((@forget c @hom my_concrete_category).obj Y)),
-    exists (g : has_hom.hom X Y), f = ((@forget c @hom my_concrete_category).map g) ∘ i
+    ∃! (g : has_hom.hom X Y), f = ((@forget c @hom my_concrete_category).map g) ∘ i
 
 
 
