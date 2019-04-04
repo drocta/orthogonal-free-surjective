@@ -38,11 +38,21 @@ end
 section
 
 variables (c : Type u -> Type v) (hom : (Pi {alpha beta : Type u}, c alpha -> c beta -> (alpha -> beta) -> Prop))
+
+#check concrete_category
+
 variable C : concrete_category @hom
 
 #check @is_free_over
 
-theorem free_over_empty_implies_initial (A : (bundled c)) : (@is_free_over c @hom C A my_empty.{u} emptyf) -> (@initial_object C A) :=
+variable [C2 : category (bundled c)]
+
+#check @initial_object
+#check @initial_object (bundled c)
+#check @initial_object (bundled c) C2
+
+
+theorem free_over_empty_implies_initial (A : (bundled c)) [C3 : category (bundled c)]: (@is_free_over c @hom C A my_empty.{u} emptyf) -> (@initial_object (bundled c) C3 A) :=
 	sorry
 
 
